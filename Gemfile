@@ -21,6 +21,7 @@ gem 'pry-rails', :group => :development
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
 gem 'bcrypt'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug', platform: :mri
