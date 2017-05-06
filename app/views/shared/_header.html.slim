@@ -1,8 +1,12 @@
 .header.navbar.navbar-fixed-top.navbar-default
   .container
-    = link_to "KIT_CTF_APP(β)", root_path, id: "logo"
+    = link_to image_tag('logo.png', id: "logo"), root_path
     nav
       .ul.nav.navbar-nav.navbar-right
-        li = link_to "ホーム", root_path
-        li = link_to "ヘルプ", help_path
-        //li = link_to "Login", login_path
+        - if user_signed_in?
+          strong = link_to current_user.username, pages_show_path
+          li = link_to "マイページ", edit_user_registration_path
+          li = link_to "ログアウト", destroy_user_session_path, method: :delete
+        - else
+          li = link_to "新規登録", new_user_registration_path
+          li = link_to "ログイン", new_user_session_path
