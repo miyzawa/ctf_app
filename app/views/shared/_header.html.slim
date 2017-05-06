@@ -4,7 +4,7 @@
     nav
       .ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
-          strong = link_to current_user.username, pages_show_path
+          li = link_to current_user.email, root_path
           li = link_to "マイページ", edit_user_registration_path
           li = link_to "ログアウト", destroy_user_session_path, method: :delete
         - else
