@@ -1,2 +1,24 @@
-h1 Admin::Questions#new
-p Find me in app/views/admin/questions/new.html.slim
+.row
+  .col-sm-8.col-sm-offset-2
+    .panel.panel-primary
+      .panel-heading
+        h3 
+          | [管理者]問題を作成する
+      .panel-body.bg-info
+        h4
+          = form_for([:admin, @question]) do |f|
+            .col-sm-10.col-sm-offset-1
+              .form-group
+                = f.label :subject, "題名"
+                = f.text_field :subject, class: 'form-control'
+              .form-group
+                = f.label :context, "内容"
+                = f.text_area :context, class: 'form-control'
+              .form-group
+                = f.label :answer, "答え"
+                = f.text_area :answer, class: 'form-control'
+              .form-group
+                = f.label :context, "ポイント"
+                = f.number_field :point, class: 'form-control'
+              .form-group
+                = f.submit "作成", class: 'btn btn-primary'
