@@ -1,2 +1,20 @@
-h1 Admin::Questions#index
-p Find me in app/views/admin/questions/index.html.slim
+.row
+  .col-sm-8.col-sm-offset-2
+    .panel.panel-primary
+      .panel-heading
+        h3 
+          | [管理者]問題一覧
+      .panel-body.bg-info
+        .col-sm-10.col-sm-offset-1
+          table.table
+            thead
+              th 題名
+              th ポイント
+            - @questions.each do |question|
+              tr
+                td = question.subject
+                td = question.point
+                td.text-right
+                  = link_to "編集", edit_admin_question_path(question), class: "btn btn-success"
+                  |  
+                  = link_to "削除", admin_question_path(question), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
