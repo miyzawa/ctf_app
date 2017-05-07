@@ -10,11 +10,14 @@
             thead
               th 題名
               th ポイント
-            - @questions.each do |question|
-              tr
-                td = question.subject
-                td = question.point
-                td.text-right
-                  = link_to "編集", edit_admin_question_path(question), class: "btn btn-success"
-                  |  
-                  = link_to "削除", admin_question_path(question), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+            tbody
+              - @questions.each do |question|
+                tr
+                  td = question.subject
+                  td = question.point
+                  td.text-right
+                    = link_to "編集", edit_admin_question_path(question), class: "btn btn-success"
+                    |  
+                    = link_to "削除", admin_question_path(question), method: :delete, data: { confirm: '問題を削除します' }, class: "btn btn-danger"
+          .row
+            = link_to "新規登録", new_admin_question_path(@questions), class: "btn btn-primary btn-block"

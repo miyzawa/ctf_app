@@ -1,5 +1,6 @@
 class Admin::QuestionsController < ApplicationController
-  before_action :set_question, only: %i[edit, update, destroy]
+  before_action :set_question, only: [:show, :edit, :update, :destroy]
+
   def index
     @questions = Question.all
   end
@@ -11,8 +12,12 @@ class Admin::QuestionsController < ApplicationController
     @question = Question.new
   end
 
+  def edit
+
+  end
+
   def create
-    @question = Question.new(user_params)
+    @question = Question.new(question_params)
     if @question.save
       redirect_to admin_questions_path
     else
@@ -26,10 +31,12 @@ class Admin::QuestionsController < ApplicationController
   end
 
   def update
+    @question.update_attributes(question_params)
+    redirect_to admin_questions_path
   end
 
   private
-    def user_params
+    def question_params
       params.require(:question).permit(:subject, :context, :point, :answer)
     end
 
