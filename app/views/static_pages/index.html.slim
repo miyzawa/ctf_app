@@ -1,7 +1,10 @@
 .row
-  .col-sm-6.col-sm-offset-3
+  .col-sm-8.col-sm-offset-2
     .panel.panel-primary
       .panel-heading
         h3 CTFの問題を解いてみる
       .panel-body.bg-info
-        h1 = link_to "スタート", "#", class: "btn btn-primary btn-lg"
+        h1 
+          = link_to "問題一覧", questions_path, class: "btn btn-success btn-lg"
+          |  
+          = link_to "ランキング", ranking_path, class: "btn btn-warning btn-lg"
